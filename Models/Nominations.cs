@@ -14,7 +14,7 @@ namespace MIS4200Team9.Models
         public string lastName { get; set; }
         public string valueName { get; set; }
         public virtual Employees employees { get; set; }
-        public virtual Values values { get; set; }
+        
 
 
 
