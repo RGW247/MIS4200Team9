@@ -14,7 +14,7 @@ namespace MIS4200Team9.DAL
 
         }
 
-        public DbSet<UserDetails> Employees { get; set; }
+        public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<Nominations> Nominations { get; set; }
 
     }
