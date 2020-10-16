@@ -11,10 +11,8 @@ namespace MIS4200Team9.Models
         [Key]
         public int coreValueID { get; set; }
         public string coreValue { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public virtual UserDetails employees { get; set; }
+        public Guid ID { get; set; }
+        public virtual UserDetails UserDetails { get; set; }
         
 
 
