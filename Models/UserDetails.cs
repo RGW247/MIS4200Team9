@@ -22,7 +22,7 @@ namespace MIS4200Team9.Models
      public string lastName { get; set; }
      [Required]
      [Display(Name = "Position Title")]
-     public string position { get; set; }
+     public string positionTitle { get; set; }
      public string photo { get; set; }
      public ICollection<Nominations> nominations { get; set; }
 
