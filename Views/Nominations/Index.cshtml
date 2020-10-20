@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserDetails.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coreValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserDetails.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.coreValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.coreValueID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.coreValueID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.coreValueID })
+        </td>
+    </tr>
+}
+
+</table>

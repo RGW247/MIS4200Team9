@@ -170,7 +170,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="DAL\MIS4200Team9Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,6 +243,11 @@
     <Content Include="Views\UserDetails\Details.cshtml" />
     <Content Include="Views\UserDetails\Edit.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\Nominations\Create.cshtml" />
+    <Content Include="Views\Nominations\Delete.cshtml" />
+    <Content Include="Views\Nominations\Details.cshtml" />
+    <Content Include="Views\Nominations\Edit.cshtml" />
+    <Content Include="Views\Nominations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
