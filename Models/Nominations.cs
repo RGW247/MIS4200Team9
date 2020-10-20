@@ -10,6 +10,8 @@ namespace MIS4200Team9.Models
     {
         [Key]
         public int coreValueID { get; set; }
+        [Required]
+        [Display(Name = "Core Value")]
         public string coreValue { get; set; }
         public Guid ID { get; set; }
         public virtual UserDetails UserDetails { get; set; }
