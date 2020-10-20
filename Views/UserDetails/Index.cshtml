@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MIS4200Team9.Models.UserDetails>
 
 @{
-    ViewBag.Title = "User Index";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.lastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.positionTitle)
+            @Html.DisplayNameFor(model => model.jobTitle)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.photo)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.lastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.positionTitle)
+            @Html.DisplayFor(modelItem => item.jobTitle)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.photo)
