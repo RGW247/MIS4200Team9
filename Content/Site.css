@@ -25,7 +25,10 @@ textarea {
     max-width: 280px;
 }
 .Jumbotron {
-    background-image: url(https://centricconsulting.com/wp-content/themes/orbit-media/images/centric-logo.png);
-    height: 500px;
-    width: 70px;
+    background: url('https://centricconsulting.com/wp-content/themes/orbit-media/images/centric-logo.png') no-repeat center center;
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
 }
+    
