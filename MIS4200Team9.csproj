@@ -251,6 +251,7 @@
     <Content Include="Views\Nominations\Details.cshtml" />
     <Content Include="Views\Nominations\Edit.cshtml" />
     <Content Include="Views\Nominations\Index.cshtml" />
+    <Content Include="Views\UserDetails\DuplicateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
