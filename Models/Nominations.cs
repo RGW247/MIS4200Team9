@@ -9,7 +9,7 @@ namespace MIS4200Team9.Models
     public class Nominations
     {
         [Key]
-        public int coreValueID { get; set; }
+        public int nominationID { get; set; }
         [Required]
         [Display(Name = "Core Value")]
         public string coreValue { get; set; }
