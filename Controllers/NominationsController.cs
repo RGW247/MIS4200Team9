@@ -18,8 +18,7 @@ namespace MIS4200Team9.Controllers
         // GET: Nominations
         public ActionResult Index()
         {
-            var nominations = db.Nominations.Include(n => n.UserDetails);
-            return View(nominations.ToList());
+            return View(db.Nominations.ToList());
         }
 
         // GET: Nominations/Details/5
@@ -40,7 +39,6 @@ namespace MIS4200Team9.Controllers
         // GET: Nominations/Create
         public ActionResult Create()
         {
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "email");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "nominationID,coreValue,ID")] Nominations nominations)
+        public ActionResult Create([Bind(Include = "nominationID,coreValue,recognizor,recognized,recognizationDate")] Nominations nominations)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace MIS4200Team9.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "email", nominations.ID);
             return View(nominations);
         }
 
@@ -74,7 +71,6 @@ namespace MIS4200Team9.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "email", nominations.ID);
             return View(nominations);
         }
 
@@ -83,7 +79,7 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "nominationID,coreValue,ID")] Nominations nominations)
+        public ActionResult Edit([Bind(Include = "nominationID,coreValue,recognizor,recognized,recognizationDate")] Nominations nominations)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace MIS4200Team9.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "email", nominations.ID);
             return View(nominations);
         }
 
