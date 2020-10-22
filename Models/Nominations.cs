@@ -12,7 +12,7 @@ namespace MIS4200Team9.Models
         public int nominationID { get; set; }
         [Required]
         [Display(Name = "Core Value Recognized")]
-        public string coreValue { get; set; }
+        public CoreValue award { get; set; }
         [Display(Name = "Recognized by")]
         public Guid recognizor { get; set; }
         [Display(Name = "Nominee")]
@@ -29,7 +29,6 @@ namespace MIS4200Team9.Models
             GreaterGood = 5,
             Balance = 6,
             IntegrityAndOpenness = 7,
-
         }
         
 
