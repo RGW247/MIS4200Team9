@@ -6,9 +6,11 @@
 
 
 <div>
-    <h4>Profile</h4>
+    <h1>Profile</h1>
     <hr />
-    <dl class="dl-horizontal">
+    <img src="~/Images/Profile-Image.png" height="125" />
+    <table class="table">
+
         <dt>
             @Html.DisplayNameFor(model => model.email)
         </dt>
@@ -49,9 +51,11 @@
             @Html.DisplayFor(model => model.photo)
         </dd>
 
-    </dl>
+        </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
