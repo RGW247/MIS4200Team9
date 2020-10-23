@@ -56,7 +56,15 @@ namespace MIS4200Team9.Controllers
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 userDetails.ID = memberID;
                 db.UserDetails.Add(userDetails);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return View("DuplicateUser");
+                }
+                
                return RedirectToAction("Index");
                }
 
