@@ -1,16 +1,15 @@
 ﻿@model MIS4200Team9.Models.UserDetails
 
 @{
-    ViewBag.Title = "User Profile";
+    ViewBag.Title = "Details";
 }
 
+<h2>Details</h2>
 
 <div>
-    <h1>Profile</h1>
+    <h4>UserDetails</h4>
     <hr />
-    <img src="~/Images/Profile-Image.png" height="125" />
-    <table class="table">
-
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.email)
         </dt>
@@ -44,6 +43,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.hireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hireDate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.photo)
         </dt>
 
@@ -51,11 +58,9 @@
             @Html.DisplayFor(model => model.photo)
         </dd>
 
-        </dl>
+    </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-

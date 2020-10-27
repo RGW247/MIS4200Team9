@@ -48,25 +48,18 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,email,firstName,lastName,jobTitle,photo")] UserDetails userDetails)
+        public ActionResult Create([Bind(Include = "ID,email,firstName,lastName,jobTitle,hireDate,photo")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
+                //userDetails.ID = Guid.NewGuid();
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 userDetails.ID = memberID;
                 db.UserDetails.Add(userDetails);
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    return View("DuplicateUser");
-                }
-                
-               return RedirectToAction("Index");
-               }
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
             return View(userDetails);
         }
@@ -91,7 +84,7 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,email,firstName,lastName,jobTitle,photo")] UserDetails userDetails)
+        public ActionResult Edit([Bind(Include = "ID,email,firstName,lastName,jobTitle,hireDate,photo")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {

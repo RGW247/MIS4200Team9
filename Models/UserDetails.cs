@@ -23,6 +23,8 @@ namespace MIS4200Team9.Models
      [Required]
      [Display(Name = "Job Title")]
      public string jobTitle { get; set; }
+    [Display(Name ="Date Hired")]
+     public DateTime hireDate { get; set; }
      public string photo { get; set; }
      public ICollection<Nominations> nominations { get; set; }
 
