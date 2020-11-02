@@ -194,9 +194,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\background.jpg" />
+    <Content Include="Images\balance.jpg" />
     <Content Include="Images\CentricLogo.png" />
     <Content Include="Images\culture.jpg" />
+    <Content Include="Images\excellence.jpg" />
+    <Content Include="Images\greaterGood.jpg" />
+    <Content Include="Images\innovation1.jpg" />
+    <Content Include="Images\integrity.jpg" />
     <Content Include="Images\Profile-Image.png" />
+    <Content Include="Images\stewardship.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
