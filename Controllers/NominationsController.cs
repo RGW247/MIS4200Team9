@@ -55,6 +55,7 @@ namespace MIS4200Team9.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
 
             return View(nominations);
         }

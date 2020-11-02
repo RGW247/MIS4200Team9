@@ -8,29 +8,41 @@ namespace MIS4200Team9.Models
 {
     public class UserDetails
     {
-     [Required]
-     public Guid ID { get; set; }
-     [Required]
-     [EmailAddress]
-     [Display(Name ="Email")]
-     public string email { get; set; }
-     [Required]
-     [Display(Name ="First Name")]
-     public string firstName { get; set; }
-     [Required]
-     [Display(Name = "Last Name")]
-     public string lastName { get; set; }
-     [Required]
-     [Display(Name = "Job Title")]
-     public string jobTitle { get; set; }
-    [Display(Name ="Date Hired")]
-     public DateTime hireDate { get; set; }
-     public string photo { get; set; }
-     public ICollection<Nominations> nominations { get; set; }
+        [Required]
+        public Guid ID { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string email { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
+        public string firstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastName { get; set; }
+        [Required]
+        [Display(Name = "Job Title")]
+        public string jobTitle { get; set; }
+        [Display(Name = "Date Hired")]
+        public DateTime hireDate { get; set; }
+        public string photo { get; set; }
+        public ICollection<Nominations> nominations { get; set; }
+        public string FullName
+
+        {
+
+            get
+
+            {
+
+                return firstName + " " + lastName;
+
+            }
 
 
 
 
+        }
     }
-    
 }
+    

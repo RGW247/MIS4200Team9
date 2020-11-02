@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using MIS4200Team9.DAL;
 using MIS4200Team9.Models;
 
@@ -17,16 +16,8 @@ namespace MIS4200Team9.Controllers
         private MIS4200Team9Context db = new MIS4200Team9Context();
 
         // GET: UserDetails
-        public ActionResult Index(string searchString)
+        public ActionResult Index()
         {
-            var testusers = from u in db.UserDetails select u;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                testusers = testusers.Where(u =>
-                u.lastName.Contains(searchString)
-                    || u.firstName.Contains(searchString));
-                return View(testusers.ToList());
-            }
             return View(db.UserDetails.ToList());
         }
 
@@ -60,10 +51,7 @@ namespace MIS4200Team9.Controllers
         {
             if (ModelState.IsValid)
             {
-                //userDetails.ID = Guid.NewGuid();
-                Guid memberID;
-                Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                userDetails.ID = memberID;
+                userDetails.ID = Guid.NewGuid();
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -137,6 +125,5 @@ namespace MIS4200Team9.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }
