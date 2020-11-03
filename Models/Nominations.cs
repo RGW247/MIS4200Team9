@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,12 +15,15 @@ namespace MIS4200Team9.Models
         [Display(Name = "Core Value Recognized")]
         public CoreValue award { get; set; }
         [Display(Name = "Recognized by")]
-        public Guid recognizor { get; set; }
+        public Guid? recognizor { get; set; }
         [Display(Name = "Nominee")]
         public Guid recognized { get; set; }
         [Display(Name = "Data of recognition")]
         public DateTime recognizationDate { get; set; }
-        public virtual UserDetails UserDetails { get; set; }
+        [ForeignKey("recognized")]
+        public virtual UserDetails nominee { get; set; }
+        [ForeignKey("recognizor")]
+        public virtual UserDetails nominator { get; set; }
         public enum CoreValue
         {
             Stewardship = 1,

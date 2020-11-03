@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200Team9.DAL;
 using MIS4200Team9.Models;
 
@@ -37,8 +39,10 @@ namespace MIS4200Team9.Controllers
         }
 
         // GET: Nominations/Create
+        [Authorize]
         public ActionResult Create()
         {
+            ViewBag.recognized = new SelectList(db.UserDetails, "ID", "fullName");
             return View();
         }
 
@@ -51,6 +55,10 @@ namespace MIS4200Team9.Controllers
         {
             if (ModelState.IsValid)
             {
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                nominations.recognizor = memberID;
+                nominations.recognizationDate = DateTime.Now;
                 db.Nominations.Add(nominations);
                 db.SaveChanges();
                 return RedirectToAction("Index");

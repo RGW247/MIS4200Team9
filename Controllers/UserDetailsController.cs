@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200Team9.DAL;
 using MIS4200Team9.Models;
 
@@ -37,6 +38,7 @@ namespace MIS4200Team9.Controllers
         }
 
         // GET: UserDetails/Create
+        
         public ActionResult Create()
         {
             return View();
@@ -51,7 +53,9 @@ namespace MIS4200Team9.Controllers
         {
             if (ModelState.IsValid)
             {
-                userDetails.ID = Guid.NewGuid();
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                userDetails.ID = memberID;
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
                 return RedirectToAction("Index");
