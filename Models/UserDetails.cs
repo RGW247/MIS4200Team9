@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -26,7 +27,9 @@ namespace MIS4200Team9.Models
         [Display(Name = "Date Hired")]
         public DateTime hireDate { get; set; }
         public string photo { get; set; }
+        [ForeignKey("nomineeID")]
         public ICollection<Nominations> nominations { get; set; }
+        [ForeignKey("recognizor")]
         public ICollection<Nominations> nominators { get; set; }
         public string FullName
 

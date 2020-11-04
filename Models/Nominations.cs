@@ -14,13 +14,14 @@ namespace MIS4200Team9.Models
         [Required]
         [Display(Name = "Core Value Recognized")]
         public CoreValue award { get; set; }
-        [Display(Name = "Recognized by")]
-        public Guid? recognizor { get; set; }
+        [Display(Name = "Nominator")]
+        [Required]
+        public Guid recognizor { get; set; }
         [Display(Name = "Nominee")]
-        public Guid recognized { get; set; }
+        public Guid nomineeID { get; set; }
         [Display(Name = "Data of recognition")]
         public DateTime recognizationDate { get; set; }
-        [ForeignKey("recognized")]
+        [ForeignKey("nomineeID")]
         public virtual UserDetails nominee { get; set; }
         [ForeignKey("recognizor")]
         public virtual UserDetails nominator { get; set; }
