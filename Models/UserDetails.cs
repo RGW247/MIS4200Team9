@@ -28,7 +28,7 @@ namespace MIS4200Team9.Models
         public DateTime hireDate { get; set; }
         public string photo { get; set; }
         [ForeignKey("nomineeID")]
-        public ICollection<Nominations> nominations { get; set; }
+        public ICollection<Nominations> nominees { get; set; }
         [ForeignKey("recognizor")]
         public ICollection<Nominations> nominators { get; set; }
         public string FullName

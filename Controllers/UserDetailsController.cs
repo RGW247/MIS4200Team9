@@ -39,6 +39,7 @@ namespace MIS4200Team9.Controllers
 
         // GET: UserDetails/Create
         
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -65,6 +66,7 @@ namespace MIS4200Team9.Controllers
         }
 
         // GET: UserDetails/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
