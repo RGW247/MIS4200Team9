@@ -17,9 +17,20 @@ namespace MIS4200Team9.Controllers
         private MIS4200Team9Context db = new MIS4200Team9Context();
 
         // GET: UserDetails
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var testusers = from u in db.UserDetails select u;
+            if (!String.IsNullOrEmpty(searchString))
+                { 
+                testusers = testusers.Where (u => 
+                u.lastName.Contains(searchString)
+                    || u.firstName.Contains(searchString));
+            }
+                   
             return View(db.UserDetails.ToList());
+        }
+            //return View(db.UserDetails.ToList());
+
         }
 
         // GET: UserDetails/Details/5
@@ -131,5 +142,9 @@ namespace MIS4200Team9.Controllers
             }
             base.Dispose(disposing);
         }
+    }
+    public ActionResult sBar(string searchString)
+    {
+        
     }
 }
