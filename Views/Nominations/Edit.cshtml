@@ -26,18 +26,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.recognizor, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.recognizor, "recognizor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recognizor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("recognizor", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.recognizor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.recognized, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nomineeID, "nomineeID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recognized, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.recognized, "", new { @class = "text-danger" })
+                @Html.DropDownList("nomineeID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.nomineeID, "", new { @class = "text-danger" })
             </div>
         </div>
 

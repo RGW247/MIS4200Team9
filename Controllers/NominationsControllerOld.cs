@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using MIS4200Team9.DAL;
 using MIS4200Team9.Models;
 
 namespace MIS4200Team9.Controllers
 {
-    public class NominationsController : Controller
+    public class NominationsControllerOld : Controller
     {
         private MIS4200Team9Context db = new MIS4200Team9Context();
 
         // GET: Nominations
         public ActionResult Index()
         {
-            var nominations = db.Nominations.Include(n => n.nominator).Include(n => n.nominee);
-            return View(nominations.ToList());
+            return View(db.Nominations.ToList());
         }
 
         // GET: Nominations/Details/5
@@ -40,10 +39,12 @@ namespace MIS4200Team9.Controllers
         }
 
         // GET: Nominations/Create
+        [Authorize]
         public ActionResult Create()
         {
-            //ViewBag.recognizer = new SelectList(db.UserDetails, "ID", "email");
             ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "fullName");
+      
+            
             return View();
         }
 
@@ -52,25 +53,22 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "nominationID,award,recognizor,nomineeID,recognizationDate")] Nominations nominations)
+        public ActionResult Create([Bind(Include = "nominationID,award,recognizor,recognized,recognizationDate")] Nominations nominations)
         {
-                if (ModelState.IsValid)
-                {
-                    Guid memberID;
-                    Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                    nominations.recognizor = memberID;
-                    nominations.recognizationDate = DateTime.Now;
-                    db.Nominations.Add(nominations);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+            if (ModelState.IsValid)
+            {
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                nominations.recognizor = memberID;
+                nominations.recognizationDate = DateTime.Now;
+                db.Nominations.Add(nominations);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-                ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "fullName");
+            ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "fullName");
 
-                return View(nominations);
-            
-
-     
+            return View(nominations);
         }
 
         // GET: Nominations/Edit/5
@@ -85,8 +83,6 @@ namespace MIS4200Team9.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.recognizor = new SelectList(db.UserDetails, "ID", "email", nominations.recognizor);
-            ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "email", nominations.nomineeID);
             return View(nominations);
         }
 
@@ -95,7 +91,7 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "nominationID,award,recognizor,nomineeID,recognizationDate")] Nominations nominations)
+        public ActionResult Edit([Bind(Include = "nominationID,award,recognizor,recognized,recognizationDate")] Nominations nominations)
         {
             if (ModelState.IsValid)
             {
@@ -103,8 +99,6 @@ namespace MIS4200Team9.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.recognizor = new SelectList(db.UserDetails, "ID", "email", nominations.recognizor);
-            ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "email", nominations.nomineeID);
             return View(nominations);
         }
 

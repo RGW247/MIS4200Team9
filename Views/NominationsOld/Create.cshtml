@@ -1,10 +1,10 @@
 ﻿@model MIS4200Team9.Models.Nominations
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Nomination";
 }
 
-<h2>Create</h2>
+<h2>Employee Recognition</h2>
 
 
 @using (Html.BeginForm()) 
@@ -24,28 +24,31 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.recognizor, "recognizor", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.recognizor, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("recognizor", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.recognizor, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.recognizor, "", new { @class = "text-danger" })
             </div>
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nomineeID, "nomineeID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nominee, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("nomineeID", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.recognized, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.nomineeID, null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.nomineeID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
             @Html.LabelFor(model => model.recognizationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.recognizationDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.recognizationDate, "", new { @class = "text-danger" })
+            <div class="col-md-10">-->
+                @*@Html.EditorFor(model => model.recognizationDate, new { htmlAttributes = new { @class = "form-control" } })*@
+               
+                
+                <!--@Html.ValidationMessageFor(model => model.recognizationDate, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>-->
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

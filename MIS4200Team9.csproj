@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NominationsController.cs" />
+    <Compile Include="Controllers\NominationsControllerOld.cs" />
     <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="DAL\MIS4200Team9Context.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,12 +257,17 @@
     <Content Include="Views\UserDetails\Details.cshtml" />
     <Content Include="Views\UserDetails\Edit.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\NominationsOld\Create.cshtml" />
+    <Content Include="Views\NominationsOld\Delete.cshtml" />
+    <Content Include="Views\NominationsOld\Details.cshtml" />
+    <Content Include="Views\NominationsOld\Edit.cshtml" />
+    <Content Include="Views\NominationsOld\Index.cshtml" />
+    <Content Include="Views\UserDetails\DuplicateUser.cshtml" />
     <Content Include="Views\Nominations\Create.cshtml" />
     <Content Include="Views\Nominations\Delete.cshtml" />
     <Content Include="Views\Nominations\Details.cshtml" />
     <Content Include="Views\Nominations\Edit.cshtml" />
     <Content Include="Views\Nominations\Index.cshtml" />
-    <Content Include="Views\UserDetails\DuplicateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

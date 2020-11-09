@@ -19,7 +19,7 @@ namespace MIS4200Team9.Models
         public Guid recognizor { get; set; }
         [Display(Name = "Nominee")]
         public Guid nomineeID { get; set; }
-        [Display(Name = "Data of recognition")]
+        [Display(Name = "Date of recognition")]
         public DateTime recognizationDate { get; set; }
         [ForeignKey("nomineeID")]
         public virtual UserDetails nominee { get; set; }

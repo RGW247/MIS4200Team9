@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Nomination Index";
 }
 
-<h2>Index</h2>
+<h2>Employee Nominations</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            Nominator:    
-        </th>
-        <th>
-            Nominee:
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.award)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recognizor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recognized)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.recognizationDate)
@@ -29,13 +29,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.award)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.nominator.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.nominee.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.award)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.recognizationDate)
