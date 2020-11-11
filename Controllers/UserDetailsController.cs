@@ -23,12 +23,13 @@ namespace MIS4200Team9.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 testusers = testusers.Where(u =>
-               u.lastName.Contains(searchString)
+                u.lastName.Contains(searchString)
                    || u.firstName.Contains(searchString));
+                return View(testusers.ToList());
             }
-
             return View(db.UserDetails.ToList());
         }
+        
 
 
 
