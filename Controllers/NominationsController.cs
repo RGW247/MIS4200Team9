@@ -40,10 +40,15 @@ namespace MIS4200Team9.Controllers
         }
 
         // GET: Nominations/Create
+        [Authorize]
         public ActionResult Create()
         {
             //ViewBag.recognizer = new SelectList(db.UserDetails, "ID", "email");
-            ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "fullName");
+            
+            string userID = User.Identity.GetUserId();
+            SelectList employees = new SelectList(db.UserDetails, "ID", "fullName");
+            employees = new SelectList(employees.Where(x => x.Value != userID).ToList(), "Value", "Text");
+            ViewBag.nomineeID = employees;
             return View();
         }
 
@@ -66,7 +71,12 @@ namespace MIS4200Team9.Controllers
                     return RedirectToAction("Index");
                 }
 
-                ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "fullName");
+            string userID = User.Identity.GetUserId();
+            SelectList employees = new SelectList(db.UserDetails, "ID", "fullName");
+            employees = new SelectList(employees.Where(x => x.Value != userID).ToList(), "Value", "Text");
+            ViewBag.nomineeID = employees;
+
+                //ViewBag.nomineeID = new SelectList(db.UserDetails, "ID", "fullName");
 
                 return View(nominations);
             

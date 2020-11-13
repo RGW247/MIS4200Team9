@@ -12,12 +12,14 @@ namespace MIS4200Team9.Models
         [Key]
         public int nominationID { get; set; }
         [Required]
-        [Display(Name = "Core Value Recognized")]
+        [Display(Name = "Award")]
+        [Range(1,7, ErrorMessage ="Please Select a Core Value")]
         public CoreValue award { get; set; }
         [Display(Name = "Nominator")]
         [Required]
         public Guid recognizor { get; set; }
         [Display(Name = "Nominee")]
+        [Required]
         public Guid nomineeID { get; set; }
         [Display(Name = "Date of recognition")]
         public DateTime recognizationDate { get; set; }
@@ -35,6 +37,7 @@ namespace MIS4200Team9.Models
             Balance = 6,
             IntegrityAndOpenness = 7,
         }
+        
         
 
 

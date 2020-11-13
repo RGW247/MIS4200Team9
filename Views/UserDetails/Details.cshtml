@@ -4,62 +4,102 @@
     ViewBag.Title = "Details";
 }
 
-<h2>User Profile</h2>
+<h1>User Profile</h1>
 
 <div>
     
-    <center>
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.email)
-            </dt>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Email:
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.email)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.firstName)
-            </dt>
+        <dt>
+            First Name:
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.firstName)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.lastName)
-            </dt>
+        <dt>
+            Last Name:
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.lastName)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.jobTitle)
-            </dt>
+        <dt>
+            Job Title:
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.jobTitle)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.jobTitle)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.hireDate)
-            </dt>
+        <dt>
+            Date Hired:
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.hireDate)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.hireDate)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.photo)
-            </dt>
+        <dt>
+            Photo:
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.photo)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+    </dl>
 
-        </dl>
-    </center>
+    <table class="table">
+        <H2>Recognitions</H2>
+        <thead>
+
+            <tr>
+
+                <th scope="col">#</th>
+
+                <th scope="col">Core Value</th>
+
+                <th scope="col">Recognized By</th>
+
+                <th scope="col">Date Recognized</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <th scope="row">1</th>
+
+                <td>Stewardship</td>
+
+                <td>Robert Williams</td>
+
+                <td>Today</td>
+
+            </tr>
+
+        </tbody>
+
+        </table>
+
+        @*Recognitions:
+
+        @Html.DisplayFor(model => model.recognition)*@
+
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
