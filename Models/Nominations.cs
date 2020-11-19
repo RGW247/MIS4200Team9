@@ -27,6 +27,7 @@ namespace MIS4200Team9.Models
         public virtual UserDetails nominee { get; set; }
         [ForeignKey("recognizor")]
         public virtual UserDetails nominator { get; set; }
+        public string description { get; set; }
         public enum CoreValue
         {
             Stewardship = 1,

@@ -46,6 +46,8 @@ namespace MIS4200Team9.Controllers
             {
                 return HttpNotFound();
             }
+
+            
             return View(userDetails);
         }
 
