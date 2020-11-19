@@ -199,11 +199,16 @@
     <Content Include="Images\CentricLogo.png" />
     <Content Include="Images\culture.jpg" />
     <Content Include="Images\excellence.jpg" />
+    <Content Include="Images\facebook.png" />
     <Content Include="Images\greaterGood.jpg" />
     <Content Include="Images\innovation1.jpg" />
+    <Content Include="Images\Instagram.jpg" />
+    <Content Include="Images\instagram2.png" />
     <Content Include="Images\integrity.jpg" />
+    <Content Include="Images\linkedin.png" />
     <Content Include="Images\Profile-Image.png" />
     <Content Include="Images\stewardship.jpg" />
+    <Content Include="Images\twitter.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
