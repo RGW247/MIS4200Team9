@@ -18,9 +18,10 @@ namespace MIS4200Team9.Controllers
         private MIS4200Team9Context db = new MIS4200Team9Context();
 
         // GET: Nominations
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
             var nominations = db.Nominations.Include(n => n.nominator).Include(n => n.nominee);
+
             return View(nominations.ToList());
         }
 
@@ -58,14 +59,14 @@ namespace MIS4200Team9.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "nominationID,award,recognizor,nomineeID,recognizationDate")] Nominations nominations)
+        public ActionResult Create([Bind(Include = "nominationID,award,recognizor,nomineeID,recognitionDate,description")] Nominations nominations)
         {
                 if (ModelState.IsValid)
                 {
                     Guid memberID;
                     Guid.TryParse(User.Identity.GetUserId(), out memberID);
                     nominations.recognizor = memberID;
-                    nominations.recognizationDate = DateTime.Now;
+                    nominations.recognitionDate = DateTime.Now;
                     db.Nominations.Add(nominations);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -106,7 +107,7 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "nominationID,award,recognizor,nomineeID,recognizationDate")] Nominations nominations)
+        public ActionResult Edit([Bind(Include = "nominationID,award,recognizor,nomineeID,recognitionDate")] Nominations nominations)
         {
             if (ModelState.IsValid)
             {

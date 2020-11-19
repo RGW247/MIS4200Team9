@@ -171,7 +171,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NominationsController.cs" />
-    <Compile Include="Controllers\NominationsControllerOld.cs" />
     <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="DAL\MIS4200Team9Context.cs" />
     <Compile Include="Global.asax.cs">
