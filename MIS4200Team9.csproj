@@ -267,6 +267,7 @@
     <Content Include="Views\Nominations\Details.cshtml" />
     <Content Include="Views\Nominations\Edit.cshtml" />
     <Content Include="Views\Nominations\Index.cshtml" />
+    <Content Include="Views\Shared\_nominationsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

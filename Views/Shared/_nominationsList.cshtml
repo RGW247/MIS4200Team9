@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nominator.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nominee.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.award)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recognitionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nominator.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nominee.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.award)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recognitionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.nominationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.nominationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.nominationID })
+        </td>
+    </tr>
+}
+
+</table>

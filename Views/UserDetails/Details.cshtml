@@ -59,43 +59,20 @@
         </dd>
     </dl>
 
-    
     <table class="table">
-        <H2>Recognitions</H2>
-        <thead>
-
-            <tr>
-
-                <th scope="col">#</th>
-
-                <th scope="col"></th>
-
-                <th scope="col">Recognized By</th>
-
-                <th scope="col">Date Recognized</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr>
-
-                <th scope="row">1</th>
-
-                <td>Stewardship</td>
-
-                <td>Robert Williams</td>
-
-                <td>Today</td>
-
-            </tr>
-
-        </tbody>
-
-        </table>
-
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="4">
+                @{ 
+                    var userID = Model.ID; ;
+                    var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
+                }
+                @Html.Partial("_nominationsList", nominations)
+            </td>
+        </tr>
+    </table>
+    
+    
     
 </div>
 
