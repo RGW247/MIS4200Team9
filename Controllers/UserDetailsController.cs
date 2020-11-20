@@ -87,12 +87,22 @@ namespace MIS4200Team9.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserDetails userDetails = db.UserDetails.Find(id);
-            if (userDetails == null)
+            UserDetails UserDetails = db.UserDetails.Find(id);
+            if (UserDetails == null)
             {
                 return HttpNotFound();
             }
-            return View(userDetails);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (UserDetails.ID == memberID)
+            {
+                return View(UserDetails);
+            }
+            else
+            {
+                return View("Home");
+            }
+            
         }
 
         // POST: UserDetails/Edit/5
