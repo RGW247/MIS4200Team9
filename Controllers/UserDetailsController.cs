@@ -29,12 +29,13 @@ namespace MIS4200Team9.Controllers
             }
             return View(db.UserDetails.ToList());
         }
-        
+
 
 
 
 
         // GET: UserDetails/Details/5
+        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -100,7 +101,7 @@ namespace MIS4200Team9.Controllers
             }
             else
             {
-                return View("Home");
+                return View("Details");
             }
             
         }

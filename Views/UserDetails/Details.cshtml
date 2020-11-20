@@ -3,11 +3,13 @@
 @{
     ViewBag.Title = "Details";
 }
+@using MIS4200Team9.DAL;
+@using MIS4200Team9.Models;
 
 <h1>User Profile</h1>
 
 <div>
-    
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -63,20 +65,22 @@
         <tr>
             <td>&nbsp;</td>
             <td colspan="4">
-                @{ 
-                    var userID = Model.ID; ;
-                    var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
+                @{
+                    var userID = Model.ID;
+                    MIS4200Team9Context db = new MIS4200Team9Context();
+                    var nominations = db.Nominations.Where(n => n.nomineeID == userID);
+                    //var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
                 }
-                @Html.Partial("_nominationsList", nominations)
+                @Html.Partial("_nominationsList", nominations.ToList());
             </td>
         </tr>
     </table>
-    
-    
-    
+
+
+
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) 
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
     @Html.ActionLink("Back to List", "Index")
 </p>
