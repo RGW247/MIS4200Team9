@@ -1,24 +1,24 @@
 ﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
+<table class="table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nominator.email)
+            Nominator:
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nominee.email)
+            Nominee:
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.award)
+            Award:
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.recognitionDate)
+            Date:
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.description)
+            Description:
         </th>
         <th></th>
     </tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.nominationID }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.nominationID }) |
             @Html.ActionLink("Details", "Details", new { id=item.nominationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.nominationID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.nominationID })*@
         </td>
     </tr>
 }

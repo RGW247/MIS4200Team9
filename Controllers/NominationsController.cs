@@ -18,9 +18,17 @@ namespace MIS4200Team9.Controllers
         private MIS4200Team9Context db = new MIS4200Team9Context();
 
         // GET: Nominations
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(String SortOrder)
         {
+         //ViewBag.DateSort = String.IsNullOrEmpty(SortOrder) ? "recognitionDate_desc" : "" ;
             var nominations = db.Nominations.Include(n => n.nominator).Include(n => n.nominee);
+
+        //switch (SortOrder)
+        //    {
+        //        case "recognitionDate_desc":
+        //            nominations = nominations.OrderByDescending(n => n.recognitionDate);
+        //            break;
+        //    }
 
             return View(nominations.ToList());
         }
