@@ -74,6 +74,7 @@ namespace MIS4200Team9.Controllers
                 userDetails.ID = memberID;
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 

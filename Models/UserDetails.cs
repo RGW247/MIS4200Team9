@@ -25,6 +25,9 @@ namespace MIS4200Team9.Models
         [Display(Name = "Job Title")]
         public string jobTitle { get; set; }
         [Display(Name = "Date Hired")]
+        [DataType(DataType.Date)]
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }
         public string photo { get; set; }
         [ForeignKey("nomineeID")]
