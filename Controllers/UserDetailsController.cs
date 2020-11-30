@@ -72,6 +72,7 @@ namespace MIS4200Team9.Controllers
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 userDetails.ID = memberID;
+                userDetails.email = User.Identity.Name;
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
                 
