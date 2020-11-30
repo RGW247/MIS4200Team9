@@ -20,8 +20,8 @@ namespace MIS4200Team9.Controllers
         // GET: Nominations
         public ActionResult Index(String SortOrder)
         {
-         
-            var nominations = db.Nominations.Include(n => n.nominator).Include(n => n.nominee);
+
+            var nominations = db.Nominations.Include(n => n.nominator).Include(n => n.nominee).OrderByDescending(n => n.recognitionDate);
  
 
             return View(nominations.ToList());
