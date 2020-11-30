@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table table-striped">
     <tr>
@@ -18,8 +18,9 @@
             Date:
         </th>
         <th>
-            Description:
+            Description
         </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -39,11 +40,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.description)
         </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.nominationID }) |
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.nominationID }) |
             @Html.ActionLink("Details", "Details", new { id=item.nominationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.nominationID })*@
-        </td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.nominationID })
+        </td>*@
     </tr>
 }
 

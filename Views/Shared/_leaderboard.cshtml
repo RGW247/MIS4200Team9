@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Nominee:
+        </th>
+        <th>
+
+            Nominations:
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nominee.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.award)
+        </td>
+    </tr>
+}
+
+</table>
