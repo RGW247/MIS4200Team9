@@ -72,7 +72,6 @@ namespace MIS4200Team9.Controllers
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 userDetails.ID = memberID;
-                userDetails.email = User.Identity.Name;
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
                 
@@ -97,13 +96,13 @@ namespace MIS4200Team9.Controllers
             }
             Guid memberID;
             Guid.TryParse(User.Identity.GetUserId(), out memberID);
-            if (UserDetails.ID == memberID)
+            if (id == memberID)
             {
                 return View(UserDetails);
             }
             else
             {
-                return View("Details");
+                return View("NotAuthorized");
             }
             
         }
