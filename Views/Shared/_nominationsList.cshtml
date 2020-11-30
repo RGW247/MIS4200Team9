@@ -3,7 +3,7 @@
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table-striped">
+<table class="table table-striped">
     <tr>
         <th>
             Nominator:
@@ -20,16 +20,15 @@
         <th>
             Description:
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.nominator.email)
+            @Html.DisplayFor(modelItem => item.nominator.FullName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.nominee.email)
+            @Html.DisplayFor(modelItem => item.nominee.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.award)
