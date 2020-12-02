@@ -7,16 +7,16 @@
 <H1>Employees</H1>
 
 @*this is the code to put the actual search text box on the index page*@
-@*@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "UserDetails", FormMethod.Get))
 
 {
 
 <p>
-    First or Last Name: @Html.TextBox("SearchName")<br />
+    First or Last Name: @Html.TextBox("searchString")<br />
 
     <input type="submit" value="Search" />
 </p>
-            }*@
+            }
 
 
 <table class="table table-hover">

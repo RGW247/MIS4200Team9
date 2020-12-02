@@ -156,5 +156,7 @@ namespace MIS4200Team9.Controllers
             }
             base.Dispose(disposing);
         }
+        // Email when user is nominated
+
     }
 }
