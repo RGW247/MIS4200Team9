@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using MIS4200Team9.DAL;
+using MIS4200Team9.Models;
 
 namespace MIS4200Team9.Controllers
 {
@@ -10,6 +13,7 @@ namespace MIS4200Team9.Controllers
     {
         public ActionResult Index()
         {
+            
             return View();
         }
 
