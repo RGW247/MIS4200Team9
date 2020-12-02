@@ -6,6 +6,18 @@
 
 <H1>Employees</H1>
 
+@*this is the code to put the actual search text box on the index page*@
+@*@using (Html.BeginForm())
+
+{
+
+<p>
+    First or Last Name: @Html.TextBox("SearchName")<br />
+
+    <input type="submit" value="Search" />
+</p>
+            }*@
+
 
 <table class="table table-hover">
     <tr>
@@ -26,29 +38,30 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.firstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.lastName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.jobTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.hireDate)
-    </td>
-    <td>
-        @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) *@
-        @Html.ActionLink("Details", "Details", new { id = item.ID })
-        @*@Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hireDate)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) *@
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+            </td>
+        </tr>
+    }
 
 </table>
