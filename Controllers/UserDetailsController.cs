@@ -20,6 +20,8 @@ namespace MIS4200Team9.Controllers
         public ActionResult Index(string searchString)
         {
             var testusers = from u in db.UserDetails select u;
+            
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 testusers = testusers.Where(u =>
@@ -27,7 +29,10 @@ namespace MIS4200Team9.Controllers
                    || u.firstName.Contains(searchString));
                 return View(testusers.ToList());
             }
-            return View(db.UserDetails.ToList());
+
+            var employees = db.UserDetails.OrderBy(u => u.lastName);
+
+            return View(employees.ToList());
         }
 
 
@@ -112,7 +117,7 @@ namespace MIS4200Team9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,email,firstName,lastName,jobTitle,hireDate,photo,recognition")] UserDetails userDetails)
+        public ActionResult Edit([Bind(Include = "ID,email,firstName,lastName,jobTitle,hireDate,photo")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {

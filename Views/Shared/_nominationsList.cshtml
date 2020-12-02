@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<MIS4200Team9.Models.Nominations>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table table-striped">
     <tr>
         <th>
@@ -18,9 +15,8 @@
             Date:
         </th>
         <th>
-            Description
+            Description:
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {

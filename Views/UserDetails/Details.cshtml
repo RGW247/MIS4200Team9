@@ -9,8 +9,6 @@
 <h1>User Profile</h1>
 
 <div>
-
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             Email:
@@ -60,25 +58,24 @@
             @Html.DisplayFor(model => model.photo)
         </dd>
     </dl>
-
-    <table class="table table-striped">
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="4">
-                @{
-                    var userID = Model.ID;
-                    MIS4200Team9Context db = new MIS4200Team9Context();
-                    var nominations = db.Nominations.Where(n => n.nomineeID == userID);
-                    //var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
-                }
-                @Html.Partial("_nominationsList", nominations.ToList());
-            </td>
-        </tr>
-    </table>
-
-
-
 </div>
+
+
+<table class="table table-striped">
+    <h2>User Nominations</h2>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan="4">
+            @{
+                var userID = Model.ID;
+                MIS4200Team9Context db = new MIS4200Team9Context();
+                var nominations = db.Nominations.Where(n => n.nomineeID == userID);
+                //var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
+            }
+            @Html.Partial("_nominationsList", nominations.ToList());
+        </td>
+    </tr>
+</table>
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
