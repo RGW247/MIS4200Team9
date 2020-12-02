@@ -71,6 +71,19 @@ namespace MIS4200Team9.Controllers
                     nominations.recognitionDate = DateTime.Now;
                     db.Nominations.Add(nominations);
                     db.SaveChanges();
+
+                //var recognizorFirstName = nominations.nominee.firstName;
+                //var recognizorLastName = nominations.nominee.lastName;
+                //var recipientFirstName = nominations.nominator.firstName;
+                //var recipientLastName = nominations.nominator.lastName;
+                //var recepientEmail = nominations.nominee.email;
+                //var valueName = nominations.award;
+                //var valueDescription = nominations.description;
+
+                //var message = "Hello" + recipientFirstName + " " + recipientLastName + ", \n\nCongradulations! ";
+                //message += "You have been recognized by " + recognizorFirstName + " " + recognizorLastName + " for exemplifying one of Centric's core values.";
+                //message += recognizorFirstName + " recognized you for demonstrating " + valueName + " in the workplace.";
+                //message += "\n\nOn behaf of Centric,\nThank you for all your hard work!";
                     return RedirectToAction("Index");
                 }
 
@@ -156,7 +169,6 @@ namespace MIS4200Team9.Controllers
             }
             base.Dispose(disposing);
         }
-        // Email when user is nominated
-
+        
     }
 }
