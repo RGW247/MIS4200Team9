@@ -69,7 +69,7 @@
             @{
                 var userID = Model.ID;
                 MIS4200Team9Context db = new MIS4200Team9Context();
-                var nominations = db.Nominations.Where(n => n.nomineeID == userID);
+                var nominations = db.Nominations.Where(n => n.nomineeID == userID).OrderByDescending(n => n.recognitionDate);
                 //var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
             }
             @Html.Partial("_nominationsList", nominations.ToList());
