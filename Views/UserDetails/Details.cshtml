@@ -72,7 +72,7 @@
                 var nominations = db.Nominations.Where(n => n.nomineeID == userID);
                 //var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
             }
-            @Html.Partial("_nominationsList", nominations.ToList());
+            @Html.Partial("_nominationsList", nominations.ToList())
         </td>
     </tr>
 </table>
