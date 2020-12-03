@@ -72,19 +72,20 @@ namespace MIS4200Team9.Controllers
                 nominations.recognitionDate = DateTime.Now;
                 db.Nominations.Add(nominations);
                 db.SaveChanges();
-
-                var recognizorFirstName = nominations.nominee.firstName;
-                var recognizorLastName = nominations.nominee.lastName;
-                var recipientFirstName = nominations.nominator.firstName;
-                var recipientLastName = nominations.nominator.lastName;
-                var recepientEmail = nominations.nominee.email;
+                var recognizorObject = db.UserDetails.Find(nominations.recognizor);
+                var recipientObject = db.UserDetails.Find(nominations.nomineeID);
+                var recognizorFirstName = recognizorObject.firstName;
+                var recognizorLastName = recognizorObject.lastName;
+                var recipientFirstName = recipientObject.firstName;
+                var recipientLastName = recipientObject.lastName;
+                var recepientEmail = recipientObject.email;
                 var valueName = nominations.award;
                 var valueDescription = nominations.description;
 
                 var message = "Hello" + recipientFirstName + " " + recipientLastName + ", \n\nCongradulations! ";
                 message += "You have been recognized by " + recognizorFirstName + " " + recognizorLastName + " for exemplifying one of Centric's core values.";
-                message += recognizorFirstName + " recognized you for demonstrating " + valueName + " in the workplace.";
-                message += "\n\nOn behaf of Centric,\nThank you for all your hard work!";
+                message += recognizorFirstName + "\nrecognized you for demonstrating " + valueName + " in the workplace.";
+                message += "\n\nOn behaf of Centric,\nthank you for all your hard work!";
 
                 MailMessage myMessage = new MailMessage();
                 MailAddress from = new MailAddress("centricvalues@gmail.com", "Centric Values System");
@@ -100,8 +101,9 @@ namespace MIS4200Team9.Controllers
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("centricvalues", "Values2020!");
                     smtp.EnableSsl = true;
-                    smtp.Send(myMessage);
-                    TempData["mailError"] = "";
+                    //smtp.Send(myMessage);
+                    TempData["mailError"] = message;
+                    return View("mailError");
                 }
                 catch (Exception ex)
                 {
