@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
@@ -63,29 +64,52 @@ namespace MIS4200Team9.Controllers
         [Authorize]
         public ActionResult Create([Bind(Include = "nominationID,award,recognizor,nomineeID,recognitionDate,description")] Nominations nominations)
         {
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                nominations.recognizor = memberID;
+                nominations.recognitionDate = DateTime.Now;
+                db.Nominations.Add(nominations);
+                db.SaveChanges();
+
+                var recognizorFirstName = nominations.nominee.firstName;
+                var recognizorLastName = nominations.nominee.lastName;
+                var recipientFirstName = nominations.nominator.firstName;
+                var recipientLastName = nominations.nominator.lastName;
+                var recepientEmail = nominations.nominee.email;
+                var valueName = nominations.award;
+                var valueDescription = nominations.description;
+
+                var message = "Hello" + recipientFirstName + " " + recipientLastName + ", \n\nCongradulations! ";
+                message += "You have been recognized by " + recognizorFirstName + " " + recognizorLastName + " for exemplifying one of Centric's core values.";
+                message += recognizorFirstName + " recognized you for demonstrating " + valueName + " in the workplace.";
+                message += "\n\nOn behaf of Centric,\nThank you for all your hard work!";
+
+                MailMessage myMessage = new MailMessage();
+                MailAddress from = new MailAddress("centricvalues@gmail.com", "Centric Values System");
+                myMessage.From = from;
+                myMessage.To.Add(recepientEmail);
+                myMessage.Subject = "Centric Core Values Recognition";
+                myMessage.Body = message;
+                try
                 {
-                    Guid memberID;
-                    Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                    nominations.recognizor = memberID;
-                    nominations.recognitionDate = DateTime.Now;
-                    db.Nominations.Add(nominations);
-                    db.SaveChanges();
-
-                //var recognizorFirstName = nominations.nominee.firstName;
-                //var recognizorLastName = nominations.nominee.lastName;
-                //var recipientFirstName = nominations.nominator.firstName;
-                //var recipientLastName = nominations.nominator.lastName;
-                //var recepientEmail = nominations.nominee.email;
-                //var valueName = nominations.award;
-                //var valueDescription = nominations.description;
-
-                //var message = "Hello" + recipientFirstName + " " + recipientLastName + ", \n\nCongradulations! ";
-                //message += "You have been recognized by " + recognizorFirstName + " " + recognizorLastName + " for exemplifying one of Centric's core values.";
-                //message += recognizorFirstName + " recognized you for demonstrating " + valueName + " in the workplace.";
-                //message += "\n\nOn behaf of Centric,\nThank you for all your hard work!";
-                    return RedirectToAction("Index");
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("centricvalues", "Values2020!");
+                    smtp.EnableSsl = true;
+                    smtp.Send(myMessage);
+                    TempData["mailError"] = "";
                 }
+                catch (Exception ex)
+                {
+                    TempData["mailError"] = ex.Message;
+                    return View("mailError");
+                }
+
+            }
 
             string userID = User.Identity.GetUserId();
             SelectList employees = new SelectList(db.UserDetails, "ID", "fullName");
