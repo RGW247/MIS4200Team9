@@ -20,8 +20,8 @@ namespace MIS4200Team9.Controllers
         public ActionResult Index(string searchString)
         {
             var testusers = from u in db.UserDetails select u;
-            
-            
+
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 testusers = testusers.Where(u =>
@@ -30,9 +30,24 @@ namespace MIS4200Team9.Controllers
                 return View(testusers.ToList());
             }
 
+            // sort listed of employees ordered by last name
             var employees = db.UserDetails.OrderBy(u => u.lastName);
 
             return View(employees.ToList());
+
+            // leaderboard creation
+
+            //var rec = db.Nominations.Where(n => n.nomineeID == id);
+            //var recList = rec.ToList();
+           /* var totalCnt = rec.Count()*/; //counts all the recognitions for that person
+
+            //var nominations = db.UserDetails.Include(n => n.nominees).OrderBy(n => n.lastName).ThenBy(n => n.firstName);
+            //nominations = nominations.OrderByDescending(n => n.nominees.Count());
+
+            //var nomList = nominations.ToList();
+
+            //return View(nomList);
+
         }
 
 
@@ -53,7 +68,7 @@ namespace MIS4200Team9.Controllers
                 return HttpNotFound();
             }
 
-            
+
             return View(userDetails);
         }
 
@@ -79,7 +94,7 @@ namespace MIS4200Team9.Controllers
                 userDetails.ID = memberID;
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -109,7 +124,7 @@ namespace MIS4200Team9.Controllers
             {
                 return View("NotAuthorized");
             }
-            
+
         }
 
         // POST: UserDetails/Edit/5
