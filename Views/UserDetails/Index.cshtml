@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<MIS4200Team9.Models.UserDetails>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -36,9 +37,6 @@
         <th>
             Hire Date:
         </th>
-        <th>
-            Total Nominations:
-        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -61,30 +59,13 @@
         @Html.DisplayFor(modelItem => item.hireDate)
     </td>
     <td>
-        @ViewBag.rec;
-    </td>
-    <td>
         @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) *@
         @Html.ActionLink("Details", "Details", new { id = item.ID })
         @*@Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
     </td>
 </tr>
-
-        @*{ 
-            var nominations = item.nominees.OrderByDescending(n => n.recognitionDate);
-            var totalNominations = item.nominees.Count();
-            var test = nominations.ToList();
-            <table>
-                        <tr>
-                            <th>Name:</th>
-                            <th>Total Nominations = @totalNominations</th>
-                            
-
-            
-                        </tr>
-            </table>
-
-        }*@
     }
-
+    
 </table>
+
+

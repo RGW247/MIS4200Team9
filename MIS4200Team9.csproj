@@ -274,8 +274,8 @@
     <Content Include="Views\Nominations\Index.cshtml" />
     <Content Include="Views\UserDetails\NotAuthorized.cshtml" />
     <Content Include="Views\Shared\_nominationsList.cshtml" />
-    <Content Include="Views\Shared\_leaderboard.cshtml" />
     <Content Include="Views\Nominations\mailError.cshtml" />
+    <Content Include="Views\UserDetails\_totalNominations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

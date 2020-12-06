@@ -50,19 +50,19 @@
             @Html.DisplayFor(model => model.hireDate)
         </dd>
 
-        <dt>
+        @*<dt>
             Photo:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.photo)
-        </dd>
+        </dd>*@
     </dl>
 </div>
 
-
+<h2>User Nominations</h2>
 <table class="table" >
-    <h2>User Nominations</h2>
+    
     <tr>
         <td>&nbsp;</td>
         <td colspan="4">
@@ -73,6 +73,19 @@
                 //var nominations = Model.nominees.Where(c => c.nomineeID == userID).ToList();
             }
             @Html.Partial("_nominationsList", nominations.ToList())
+        </td>
+        <td>
+            
+            Total Nominations = @ViewBag.totalNoms <br />
+            
+            @*Stewardship = @ViewBag.stewardshipCount <br />
+            Culture = @ViewBag.cultureCount <br />
+            Excellence = @ViewBag.excellenceCount  <br />
+            Innovation = @ViewBag.innovationCount  <br />
+            GreaterGood = @ViewBag.greaterGoodCount <br />
+            Balance = @ViewBag.balanceCount <br />
+            Integrity and Openness = @ViewBag.integrityCount  <br />*@
+
         </td>
     </tr>
 </table>

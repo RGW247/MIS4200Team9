@@ -34,6 +34,7 @@ namespace MIS4200Team9.Models
         public ICollection<Nominations> nominees { get; set; }
         [ForeignKey("recognizor")]
         public ICollection<Nominations> nominators { get; set; }
+
         public string FullName
 
         {

@@ -1,0 +1,28 @@
+﻿@model MIS4200Team9.Models.UserDetails
+
+<div>
+    <h1>Leaderboard</h1>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>
+            Total Nominations:
+        </dt>
+
+        <dd>
+            @ViewBag.totalNoms
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

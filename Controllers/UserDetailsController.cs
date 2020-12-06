@@ -34,20 +34,6 @@ namespace MIS4200Team9.Controllers
             var employees = db.UserDetails.OrderBy(u => u.lastName);
 
             return View(employees.ToList());
-
-            // leaderboard creation
-
-            //var rec = db.Nominations.Where(n => n.nomineeID == id);
-            //var recList = rec.ToList();
-           /* var totalCnt = rec.Count()*/; //counts all the recognitions for that person
-
-            //var nominations = db.UserDetails.Include(n => n.nominees).OrderBy(n => n.lastName).ThenBy(n => n.firstName);
-            //nominations = nominations.OrderByDescending(n => n.nominees.Count());
-
-            //var nomList = nominations.ToList();
-
-            //return View(nomList);
-
         }
 
 
@@ -67,6 +53,37 @@ namespace MIS4200Team9.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Leaderboard creation
+            var nom = db.Nominations.Where(r => r.nomineeID == id);
+            var overall = db.Nominations.Count();
+            var nomList = nom.ToList();
+            var totalNoms = nomList.Count(); 
+            
+            
+            
+            ViewBag.nomCount = totalNoms;
+
+            // Count each award
+            //var stewardshipCount = nomList.Where(r => r.award.Equals("Stewardship");
+            //var cultureCount = nomList.Where(r => r.award.Equals("Culture"));
+            //var excellenceCount = nomList.Where(r => r.award.Equals("Excellence"));
+            //var innovationCount = nomList.Where(r => r.award.Equals("Innovation"));
+            //var greaterGoodCount = nomList.Where(r => r.award.Equals("GreaterGood"));
+            //var balanceCount = nomList.Where(r => r.award.Equals("Balance"));
+            //var integrityCount = nomList.Where(r => r.award.Equals("IntegrityAndOpenness");
+
+            //ViewBag.overall = overall;
+            ViewBag.totalNoms = totalNoms;
+            //ViewBag.stewardshipCount = stewardshipCount;
+            //ViewBag.cultureCount = cultureCount;
+            //ViewBag.excellenceCount = excellenceCount;
+            //ViewBag.innovationCount = innovationCount;
+            //ViewBag.greaterGoodCount = greaterGoodCount;
+            //ViewBag.balanceCount = balanceCount;
+            //ViewBag.integrityCount = integrityCount;
+
+
 
 
             return View(userDetails);
@@ -177,6 +194,7 @@ namespace MIS4200Team9.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
     
