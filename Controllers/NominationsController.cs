@@ -82,10 +82,10 @@ namespace MIS4200Team9.Controllers
                 var valueName = nominations.award;
                 var valueDescription = nominations.description;
 
-                var message = "Hello" + recipientFirstName + " " + recipientLastName + ", \n\nCongradulations! ";
-                message += "You have been recognized by " + recognizorFirstName + " " + recognizorLastName + " for exemplifying one of Centric's core values.";
+                var message = "Hello" + " " + recipientFirstName + " " + recipientLastName + ", \n\nCongratulations! ";
+                message += "You have been recognized by " + recognizorFirstName + " " + recognizorLastName + " for exemplifying one of Centric's core values." + " ";
                 message += recognizorFirstName + "\nrecognized you for demonstrating " + valueName + " in the workplace.";
-                message += "\n\nOn behaf of Centric,\nthank you for all your hard work!";
+                message += "\n\nOn behalf of Centric,\nthank you for all your hard work!";
 
                 MailMessage myMessage = new MailMessage();
                 MailAddress from = new MailAddress("centricvalues@gmail.com", "Centric Values System");
