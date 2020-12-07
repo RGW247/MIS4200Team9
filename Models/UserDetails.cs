@@ -11,7 +11,7 @@ namespace MIS4200Team9.Models
     {
         [Required]
         public Guid ID { get; set; }
-        
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string email { get; set; }
